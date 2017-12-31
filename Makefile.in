@@ -1,0 +1,11 @@
+SRC=src
+LD=-lc
+all :
+
+test : all
+	@prove -e"perl6 -I lib" -v t
+
+clean :
+
+realclean : clean
+	@rm -f Makefile

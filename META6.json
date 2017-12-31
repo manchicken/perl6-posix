@@ -1,0 +1,22 @@
+{
+  "authors"       : [ "Cory Spencer","Mike Stemle, Jr." ],
+  "perl"          : "6.*",
+  "name"          : "POSIX",
+  "tags"          : [ "POSIX" ],
+  "version"       : "0.2.0",
+  "license"       : "Artistic-2.0",
+  "description"   : "POSIX - Perl 6 interface to IEEE Std 1003.1",
+  "source-url"    : "git@github.com:manchicken/perl6-posix-1.git",
+  "depends"       : [ "NativeCall" ],
+  "build-depends" : [],
+  "test-depends"  : [ "Test" ],
+  "provides"      : {
+    "POSIX"          : "lib/POSIX.pm",
+    "POSIX::errno"   : "lib/POSIX/errno.pm",
+    "POSIX::passwd"  : "lib/POSIX/passwd.pm",
+    "POSIX::stat"    : "lib/POSIX/stat.pm",
+    "POSIX::time_h"  : "lib/POSIX/time_h.pm",
+    "POSIX::types_h" : "lib/POSIX/types_h.pm"
+  },
+  "resources"     : []
+}
