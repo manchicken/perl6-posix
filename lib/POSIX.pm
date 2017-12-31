@@ -8,7 +8,7 @@ use POSIX::time_h;
 
 sub EXPORT {
   Map.new: (
-    | POSIX::passwd::DEFAULT::,
-    | POSIX::time_h::DEFAULT::,
+    | POSIX::passwd::EXPORT::DEFAULT::.kv,
+    | POSIX::time_h::EXPORT::DEFAULT::.kv,
   )
 }

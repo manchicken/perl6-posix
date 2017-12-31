@@ -4,4 +4,4 @@ use NativeCall;
 
 unit package POSIX::time_h;
 
-our constant darwin_time_t is export(:DEFAULT) = uint64;
+constant darwin_time_t is export(:DEFAULT) = uint64;
