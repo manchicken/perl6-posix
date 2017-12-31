@@ -5,6 +5,7 @@ os:
   - osx
 
 perl6:
+  - 2017.10
   - latest
 
 sudo: false
