@@ -11,9 +11,5 @@ perl6:
 sudo: false
 
 install:
-  - uname -a
-  - rakudobrew build zef
-  - zef --depsonly install .
-  - zef --verbose build .
   - AUTHOR_TESTING=1 prove -ve "perl6 -Ilib -Iresources/lib"
   - zef --verbose install .
