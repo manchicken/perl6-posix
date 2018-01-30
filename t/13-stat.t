@@ -3,6 +3,8 @@ use v6;
 use Test;
 use POSIX;
 
+use lib 'lib';
+
 plan 1;
 
 {

@@ -1,11 +1,24 @@
 SRC=src
-LD=-lc
-all :
+all : bin pm
+
+bin : resources/bin/make-constants%EXE%
+pm : lib/POSIX/constants.pm
+
+# This is the constants stuff...
+resources/bin/make-constants%EXE% : $(SRC)/make-constants.c
+	%CC% -I $(SRC) %CCFLAGS% %CCOUT%resources/bin/make-constants%EXE% $(SRC)/make-constants.c
+
+lib/POSIX/constants.pm: resources/bin/make-constants%EXE%
+	./resources/bin/make-constants%EXE%
+	@mv constants.pm lib/POSIX/constants.pm
 
 test : all
 	@prove -e"perl6 -I lib" -v t
 
 clean :
+	@rm -f $(SRC)/*.o
+	@rm -f resources/bin/make-constants%EXE%
+	@rm -rf .precomp lib/.precomp
 
 realclean : clean
 	@rm -f Makefile
