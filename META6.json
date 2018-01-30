@@ -8,7 +8,7 @@
   "description"   : "POSIX - Perl 6 interface to IEEE Std 1003.1",
   "source-url"    : "git@github.com:manchicken/perl6-posix-1.git",
   "depends"       : [ "NativeCall" ],
-  "build-depends" : [],
+  "build-depends" : [ "LibraryMake" ],
   "test-depends"  : [ "Test" ],
   "provides"      : {
     "POSIX"          : "lib/POSIX.pm",

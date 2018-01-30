@@ -20,6 +20,7 @@ class ConstantWriter {
       .print: qq«  fclose(outfile);\n»;
       .print: qq«  return 0;\n»;
       .print: '}';
+      .close;
     }
   }
 }
@@ -27,7 +28,7 @@ class ConstantWriter {
 class Build {
   need LibraryMake;
 
-  method build($me :$workdir) {
+  method build($workdir) {
     say 'HERE';
     my $cw = ConstantWriter.new(
       headers => <errno.h>,
@@ -44,17 +45,15 @@ class Build {
   }
 
   sub make(:$folder, :$destfolder, :$outname) {
-      my %vars = LibraryMake::get-vars($destfolder);
-      "VARS: ".say;
-      %vars.perl.say;
+    my %vars = LibraryMake::get-vars($destfolder);
 
-      mkdir($destfolder);
-      LibraryMake::process-makefile($folder, %vars);
-      shell(%vars<MAKE>);
+    mkdir($destfolder);
+    LibraryMake::process-makefile($folder, %vars);
+    shell(%vars<MAKE>);
   }
 }
 
 # Build.pm can also be run standalone
 sub MAIN(Str $working-directory = '.' ) {
-  Build.new.build(workdir => $working-directory);
+  Build.new.build($working-directory);
 }

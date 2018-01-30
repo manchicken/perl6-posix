@@ -14,3 +14,5 @@ constant mode_t is export = uint16;
 constant off_t is export = int64;
 constant blksize_t is export = int32;
 constant blkcnt_t is export = int64;
+constant uid_t is export  = uint32;
+constant gid_t is export = uint32;

@@ -2,12 +2,10 @@ use v6;
 
 use NativeCall;
 
+use POSIX::types_h;
 use POSIX::time_h;
 
 unit package POSIX::passwd;
-
-constant uid_t is export  = uint32;
-constant gid_t is export = uint32;
 
 constant group is export = class :: is repr('CStruct') {
 has Str         $.name;
