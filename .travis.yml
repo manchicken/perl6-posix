@@ -5,11 +5,15 @@ os:
   - osx
 
 perl6:
-  - "2017.10"
   - latest
 
 sudo: false
 
 install:
+  - uname -a
+  - rakudobrew build zef
+  - zef --depsonly install .
+  - zef --verbose build .
+  - find $TRAVIS_BUILD_DIR -type f
   - AUTHOR_TESTING=1 prove -ve "perl6 -Ilib -Iresources/lib"
   - zef --verbose install .
