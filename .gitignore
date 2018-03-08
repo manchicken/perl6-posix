@@ -1,5 +1,6 @@
 .precomp
 Makefile
-resources/bin/make-constants
+resources
 lib/POSIX/constants.pm
 src/make-constants.c
+src/*.o
