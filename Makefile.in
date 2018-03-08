@@ -1,8 +1,9 @@
 SRC=src
-all : bin pm
+all : pm lib bin
 
 bin : resources/bin/make-constants%EXE%
 pm : lib/POSIX/constants.pm
+lib : resources/lib/libposix-wrappers%SO%
 
 # This is the constants stuff...
 resources/bin/make-constants%EXE% : $(SRC)/make-constants.c
@@ -11,6 +12,14 @@ resources/bin/make-constants%EXE% : $(SRC)/make-constants.c
 lib/POSIX/constants.pm: resources/bin/make-constants%EXE%
 	./resources/bin/make-constants%EXE%
 	@mv constants.pm lib/POSIX/constants.pm
+
+$(SRC)/posix-wrappers%O% : $(SRC)/posix-wrappers.c
+	%CC% -I $(SRC) -v -c %CCSHARED% %CCFLAGS% %CCOUT%$(SRC)/posix-wrappers%O% $(SRC)/posix-wrappers.c
+
+resources/lib/libposix-wrappers%SO% : $(SRC)/posix-wrappers%O%
+	%LD% %LDSHARED% -v %LDFLAGS% \
+		%LDOUT%resources/lib/libposix-wrappers%SO% \
+		$(SRC)/posix-wrappers%O%
 
 test : all
 	@prove -e"perl6 -I lib" -v t

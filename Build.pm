@@ -38,7 +38,7 @@ class Build {
     $cw.generate-library(outfile => 'src/make-constants.c', package => 'POSIX::constants');
 
     for <
-      resources/bin make-constants
+      resources/bin make-constants resources/lib libposix-wrappers
     > -> $dir, $obj {
       make(folder=>$workdir, destfolder=>$dir, outname=>$obj);
     }

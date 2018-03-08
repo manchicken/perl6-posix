@@ -37,7 +37,7 @@ class stat_t is export is repr('CStruct') {
   }
 }
 
-sub _stat( Str, stat_t is rw --> int32 ) is native is symbol('stat') { * };
+sub _stat( Str, stat_t is rw --> int32 ) is native('posix-wrappers') is symbol('stat') { * };
 #| The stat implementation here allocates your memory and returns it for you.
 sub stat( Str $path --> stat_t ) is export {
   my $output = stat_t.new();

@@ -18,5 +18,5 @@
     "POSIX::time_h"  : "lib/POSIX/time_h.pm",
     "POSIX::types_h" : "lib/POSIX/types_h.pm"
   },
-  "resources"     : []
+  "resources"     : ["resources/lib/posix-wrappers"]
 }
